@@ -1,0 +1,19 @@
+.wrapper {
+	@apply h-[100vh] flex gap-y-4 items-center w-full;
+
+	> .area {
+		@apply flex items-center flex-col gap-y-4 w-full;
+
+		> .emoji {
+			@apply text-6xl;
+		}
+
+		> h1 {
+			@apply text-3xl;
+		}
+
+		> .link {
+			@apply underline-offset-4 hover:underline;
+		}
+	}
+}

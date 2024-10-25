@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 import { ConfirmEmailError } from '@/app/auth/confirm/confirm-error.types';
 import { useConfirmQuery } from '@/app/auth/confirm/useConfirmQuery';
@@ -14,13 +15,25 @@ import styles from './Confirm.module.scss';
 
 const Confirm = () => {
 	const searchParams = useSearchParams();
-	const router = useRouter();
+	const { push, refresh } = useRouter();
 
 	const confirmToken = searchParams.get('token') || '';
 
-	const { data, isPending, error } = useConfirmQuery(confirmToken);
+	const { data, isPending, isSuccess, error } = useConfirmQuery(confirmToken);
 
 	const errorMessage = error as ConfirmEmailError;
+
+	useEffect(() => {
+		if (isSuccess) {
+			const timer = setTimeout(() => {
+				toast.success('Confirm email successful! You can now log-in!');
+				push(PUBLIC_URL.auth());
+				refresh();
+			}, 3000);
+
+			return () => clearTimeout(timer);
+		}
+	}, [data]);
 
 	return (
 		<div className={styles.wrapper}>
@@ -34,20 +47,15 @@ const Confirm = () => {
 							<p className={styles.message}>{data.message}</p>
 						) : (
 							error && (
-								<>
-									<div className={styles.message}>
-										<span className={styles.error}>{errorMessage.message}: </span> <br />
-										{errorMessage.response.data.message}
-									</div>
-									<Button
-										onClick={() => router.push(PUBLIC_URL.auth())}
-										className={styles.button}
-									>
-										Go back
-									</Button>
-								</>
+								<div className={styles.message}>
+									<span className={styles.error}>{errorMessage.message}: </span> <br />
+									{errorMessage.response.data.message}
+								</div>
 							)
 						)}
+						<Button onClick={() => push(PUBLIC_URL.auth())} className={styles.button}>
+							Go back
+						</Button>
 					</>
 				)}
 			</div>
