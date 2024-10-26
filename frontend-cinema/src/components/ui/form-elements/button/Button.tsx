@@ -18,7 +18,7 @@ const Button: FC<IButton> = ({
 				styles.button,
 				className,
 				size === 'sm' && 'rounded-lg px-4',
-				size === 'md' && 'text-sm rounded-md',
+				size === 'md' && 'rounded-md',
 				{
 					[styles.default]: variant === 'default',
 					[styles.outline]: variant === 'outline',

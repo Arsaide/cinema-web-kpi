@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import toast from 'react-hot-toast';
@@ -53,9 +54,9 @@ const Confirm = () => {
 								</div>
 							)
 						)}
-						<Button onClick={() => push(PUBLIC_URL.auth())} className={styles.button}>
-							Go back
-						</Button>
+						<Link href={PUBLIC_URL.auth()}>
+							<Button className={styles.button}>Go back</Button>
+						</Link>
 					</>
 				)}
 			</div>

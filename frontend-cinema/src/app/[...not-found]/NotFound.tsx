@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import Button from '@/components/ui/form-elements/button/Button';
 import Heading from '@/components/ui/heading/Heading';
 
 import { PUBLIC_URL } from '@/config/url.config';
@@ -15,7 +16,7 @@ const NotFound = () => {
 				<Heading>404. Page isn&apos;t found!</Heading>
 				<p>It looks like such a page doesn&apos;t exist</p>
 				<Link href={PUBLIC_URL.home()} className={styles.link}>
-					Go to main page
+					<Button size={'sm'}>Go to main page</Button>
 				</Link>
 			</div>
 		</div>
