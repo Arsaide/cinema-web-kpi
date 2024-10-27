@@ -1,14 +1,14 @@
-interface ITopMovies {
+export interface ITopMovie {
 	title: string;
 	views: number;
 }
 
-interface ISalesByWeek {
+export interface ISalesByWeek {
 	date: string;
 	total: number;
 }
 
 export interface IMiddleStatisticsResponse {
-	topMovies: ITopMovies[];
+	topMovies: ITopMovie[];
 	salesByWeek: ISalesByWeek[];
 }
