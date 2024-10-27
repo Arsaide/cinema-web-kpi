@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import React from 'react';
 
+import Admin from '@/app/(main)/admin/Admin';
+
 import { NO_INDEX_PAGE } from '@/constants/seo.constants';
 
 export const metadata: Metadata = {
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const AdminPage = () => {
-	return <div>Admin</div>;
+	return <Admin />;
 };
 
 export default AdminPage;
