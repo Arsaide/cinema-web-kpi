@@ -32,14 +32,14 @@ export const adminMenu: IMenu = {
 			value: 'Statistics',
 		},
 		{
-			icon: 'LuTv',
-			link: ADMIN_URL.movies(),
-			value: 'Films',
-		},
-		{
 			icon: 'LuUsers',
 			link: ADMIN_URL.users(),
 			value: 'Users',
+		},
+		{
+			icon: 'LuTv',
+			link: ADMIN_URL.movies(),
+			value: 'Films',
 		},
 		{
 			icon: 'LuBook',
