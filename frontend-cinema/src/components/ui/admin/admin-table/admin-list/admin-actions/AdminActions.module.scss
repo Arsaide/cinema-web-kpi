@@ -1,7 +1,0 @@
-.actions {
-	@apply flex items-center gap-4;
-
-	> button {
-		@apply border-none bg-transparent text-xl text-primary/80 outline-none transition-opacity hover:text-primary;
-	}
-}
