@@ -26,7 +26,7 @@ import { PaymentModule } from './payment/payment.module';
         StatisticsModule,
         ServeStaticModule.forRoot({
             rootPath: join(__dirname, '..', 'uploads'),
-            serveRoot: '/uploads'
+            serveRoot: '/uploads',
         }),
     ],
 })

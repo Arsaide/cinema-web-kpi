@@ -1,0 +1,20 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"es2020": true,
+		"node": true
+	},
+	"extends": ["next", "next/typescript"],
+	"plugins": ["@typescript-eslint", "import"],
+	"rules": {
+		"eslint-disable-next-line": "off",
+		"react-hooks/exhaustive-deps": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"no-console": ["error", { "allow": ["warn", "error"] }]
+	}
+}

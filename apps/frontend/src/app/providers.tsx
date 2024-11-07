@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { FC, PropsWithChildren, useState } from 'react'
-import { Toaster } from 'react-hot-toast'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { FC, PropsWithChildren, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 const Providers: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const [client] = useState(
 		new QueryClient({
 			defaultOptions: {
 				queries: {
-					refetchOnWindowFocus: false
-				}
-			}
-		})
-	)
+					refetchOnWindowFocus: false,
+				},
+			},
+		}),
+	);
 
 	return (
 		<QueryClientProvider client={client}>
@@ -23,13 +23,13 @@ const Providers: FC<PropsWithChildren<unknown>> = ({ children }) => {
 					duration: 2000,
 					style: {
 						background: '#333',
-						color: '#fff'
-					}
+						color: '#fff',
+					},
 				}}
 			/>
 			{children}
 		</QueryClientProvider>
-	)
-}
+	);
+};
 
-export default Providers
+export default Providers;

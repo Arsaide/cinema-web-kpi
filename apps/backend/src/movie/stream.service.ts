@@ -69,6 +69,7 @@ export class StreamService {
                 createReadStream(videoPath).pipe(res);
             }
         } catch (error) {
+            console.error(error);
             throw new NotFoundException('Video not found!');
         }
     }

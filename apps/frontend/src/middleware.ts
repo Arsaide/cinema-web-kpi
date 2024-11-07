@@ -29,8 +29,6 @@ export const middleware = async (request: NextRequest) => {
 	try {
 		const profile = await userService.getProfileMiddleware(refreshToken);
 
-		console.log(profile);
-
 		if (profile.role === UserRole.ADMIN) {
 			return NextResponse.next();
 		}
