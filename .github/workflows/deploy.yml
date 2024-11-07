@@ -1,0 +1,48 @@
+name: Deploy to VPS
+
+env: 
+    HOST: ${{ secrets.HOST }}
+    USER: ${{ secrets.USER }}
+    SSH_KEY: ${{ secrets.SSH_KEY }}
+    
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run ESlint
+        run: yarn eslint . --max-warnings=0
+
+      - name: Build application
+        run: yarn build
+
+      - name: Deploy to VPS
+        if: success()
+
+        run: |
+          echo "$SSH_KEY" > ssh_key
+          chmod 600 ssh_key
+          ssh -o StrictHostKeyChecking=no -i ssh_key $USER@$HOST << "EOF"
+            cd /
+            git pull origin main
+            yarn install
+            yarn build
+            pm2 restart all
+          EOF
+          rm ssh_key
