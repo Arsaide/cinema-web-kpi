@@ -26,6 +26,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Init .env files
+        run: |
+          echo "${{ secrets.FRONTEND_ENV }}" > apps/frontend/.env
+          echo "${{ secrets.BACKEND_ENV }}" > apps/backend/.env
+
       - name: Run ESlint
         run: yarn eslint . --max-warnings=0
 
