@@ -4,6 +4,7 @@ node_modules
 uploads
 packages
 yarn.lock
+/logs
 
 /apps/frontend/.env
 /apps/frontend/.turbo
