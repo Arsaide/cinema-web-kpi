@@ -46,6 +46,11 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ssh_key $USER@$HOST << "EOF"
             cd cinema-web-kpi/
             git pull origin main
+            
+            if sudo fuser 3000/tcp; then
+              sudo fuser -k 3000/tcp
+            fi
+          
             turbo build
             turbo start
           EOF
