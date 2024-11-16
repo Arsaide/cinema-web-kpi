@@ -32,10 +32,10 @@ jobs:
           echo "${{ secrets.BACKEND_ENV }}" > apps/backend/.env
 
       - name: Run ESlint
-        run: turbo lint eslint . --max-warnings=0
+        run: yarn turbo run lint
 
       - name: Build application
-        run: turbo build
+        run: yarn turbo run build
 
       - name: Deploy to VPS
         if: success()
