@@ -46,8 +46,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ssh_key $USER@$HOST << "EOF"
             cd cinema-web-kpi/
             git pull origin main
-            yarn install
-            yarn build
-            pm2 restart all
+            turbo build
+            pm2 restart cinema-mono-repo
           EOF
           rm ssh_key
