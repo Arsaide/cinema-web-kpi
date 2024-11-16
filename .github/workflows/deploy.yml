@@ -32,10 +32,10 @@ jobs:
           echo "${{ secrets.BACKEND_ENV }}" > apps/backend/.env
 
       - name: Run ESlint
-        run: yarn eslint . --max-warnings=0
+        run: turbo lint eslint . --max-warnings=0
 
       - name: Build application
-        run: yarn build
+        run: turbo build
 
       - name: Deploy to VPS
         if: success()
@@ -47,6 +47,6 @@ jobs:
             cd cinema-web-kpi/
             git pull origin main
             turbo build
-            pm2 restart cinema-mono-repo
+            turbo start
           EOF
           rm ssh_key
