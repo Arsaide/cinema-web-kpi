@@ -49,6 +49,6 @@ jobs:
      
             turbo build
             pm2 restart cinema-project
-#            pm2 start turbo --name cinema-project -- run start
+
           EOF
           rm ssh_key
