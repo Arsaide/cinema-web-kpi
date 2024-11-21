@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-// const serverUrl = process.env.SERVER_URL || 'http://188.40.22.225/';
+const serverUrl = process.env.SERVER_URL || 'http://188.40.22.225/';
 
 const nextConfig = {
 	env: {
