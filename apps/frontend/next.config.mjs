@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const serverUrl = process.env.SERVER_URL || 'http://localhost:4000/api/';
+// const serverUrl = process.env.SERVER_URL || 'http://188.40.22.225/';
 
 const nextConfig = {
 	env: {
@@ -10,7 +10,7 @@ const nextConfig = {
 		return [
 			{
 				source: '/uploads/:path*',
-				destination: `${serverUrl}/uploads/:path*`,
+				destination: `http://188.40.22.225/uploads/:path*`,
 			},
 		];
 	},
@@ -18,7 +18,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'http',
-				hostname: 'http://188.40.22.225/',
+				hostname: '188.40.22.225',
 				port: '80',
 				pathname: '/uploads/**',
 			},
