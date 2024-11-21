@@ -15,7 +15,14 @@ const nextConfig = {
 		];
 	},
 	images: {
-		domains: ['188.40.22.225'],
+		remotePatterns: [
+			{
+				protocol: 'http',
+				hostname: 'http://188.40.22.225/',
+				port: '80',
+				pathname: '/uploads/**',
+			},
+		],
 	},
 };
 
