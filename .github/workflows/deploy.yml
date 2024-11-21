@@ -44,7 +44,7 @@ jobs:
           echo "$SSH_KEY" > ssh_key
           chmod 600 ssh_key
           ssh -o StrictHostKeyChecking=no -i ssh_key $USER@$HOST << "EOF"
-            cd cinema-web-kpi/
+            cd /var/www/cinema-web-kpi/
             git pull origin main
      
             turbo build

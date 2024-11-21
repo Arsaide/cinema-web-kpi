@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const serverUrl = process.env.SERVER_URL || 'http://localhost:4000';
+const serverUrl = process.env.SERVER_URL || 'http://localhost:4000/api/';
 
 const nextConfig = {
 	env: {
@@ -13,6 +13,9 @@ const nextConfig = {
 				destination: `${serverUrl}/uploads/:path*`,
 			},
 		];
+	},
+	images: {
+		domains: ['188.40.22.225'],
 	},
 };
 
