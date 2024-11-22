@@ -1,3 +1,7 @@
+.loading {
+	@apply space-y-4 mt-4;
+}
+
 .item {
 	@apply flex items-center justify-between bg-gray-700 bg-opacity-20 mt-4 px-5 rounded-md transition-colors hover:bg-opacity-50;
 

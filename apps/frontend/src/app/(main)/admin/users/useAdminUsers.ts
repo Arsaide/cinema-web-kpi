@@ -20,7 +20,7 @@ export const useAdminUsers = () => {
 	const queryClient = useQueryClient();
 
 	const { data: users, isLoading } = useQuery({
-		queryKey: ['get users for admin dashboard', searchTerm],
+		queryKey: ['get users for admin dashboard', debouncedSearch],
 		queryFn: () => userService.getAll(debouncedSearch),
 		select: data =>
 			data.map(

@@ -16,7 +16,7 @@ const SearchField: FC<ISearchField> = ({ searchTerm, handleSearch }) => {
 			<input
 				type={'text'}
 				placeholder={'Search...'}
-				value={searchTerm}
+				value={searchTerm || ''}
 				onChange={handleSearch}
 			/>
 		</label>

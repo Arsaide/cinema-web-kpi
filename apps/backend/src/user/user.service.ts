@@ -78,10 +78,6 @@ export class UserService {
             where: {
                 OR: [
                     {
-                        name: {
-                            contains: searchTerm,
-                            mode: 'insensitive',
-                        },
                         email: {
                             contains: searchTerm,
                             mode: 'insensitive',
