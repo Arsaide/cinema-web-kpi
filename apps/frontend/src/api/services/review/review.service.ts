@@ -1,4 +1,4 @@
-import { axiosClassic, axiosWithAuth } from '@/api/interceptors';
+import { axiosWithAuth } from '@/api/interceptors';
 
 import { API_URL } from '@/config/api.config';
 
@@ -11,7 +11,7 @@ type TypeData = {
 
 class ReviewService {
 	async getAll() {
-		const { data } = await axiosClassic.get<IReview[]>(API_URL.reviews(''));
+		const { data } = await axiosWithAuth.get<IReview[]>(API_URL.reviews(''));
 
 		return data;
 	}

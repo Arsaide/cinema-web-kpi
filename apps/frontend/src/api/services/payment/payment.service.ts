@@ -1,4 +1,4 @@
-import { axiosClassic, axiosWithAuth } from '@/api/interceptors';
+import { axiosWithAuth } from '@/api/interceptors';
 
 import { API_URL } from '@/config/api.config';
 
@@ -16,7 +16,7 @@ class PaymentService {
 	}
 
 	async getAll() {
-		const { data } = await axiosClassic.get<IPayment[]>(API_URL.payments(''));
+		const { data } = await axiosWithAuth.get<IPayment[]>(API_URL.payments(''));
 
 		return data;
 	}

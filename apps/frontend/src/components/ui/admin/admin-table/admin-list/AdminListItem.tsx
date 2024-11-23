@@ -5,7 +5,7 @@ import { IAdminListItem } from '@/components/ui/admin/admin-table/admin-list/adm
 
 import styles from './AdminList.module.scss';
 
-const AdminListItem: FC<IAdminListItem> = ({ listItem, removeHandler }) => {
+const AdminListItem: FC<IAdminListItem> = ({ listItem, removeHandler, cancelHandler }) => {
 	return (
 		<div className={styles.item}>
 			{listItem.items.map(value => (
@@ -16,6 +16,7 @@ const AdminListItem: FC<IAdminListItem> = ({ listItem, removeHandler }) => {
 				viewUrl={listItem.viewUrl}
 				editUrl={listItem.editUrl}
 				removeHandler={removeHandler}
+				cancelHandler={cancelHandler}
 			/>
 		</div>
 	);

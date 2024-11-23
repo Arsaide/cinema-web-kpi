@@ -14,7 +14,7 @@ const Actors = () => {
 
 	return (
 		<div className={'px-6'}>
-			<Heading>🎭 Actors</Heading>
+			<Heading>🧝🏻‍♂️ Actors</Heading>
 			<AdminHeader searchTerm={searchTerm} handleSearch={handleSearch} onClick={createAsync} />
 			<AdminList
 				listItems={actors || []}

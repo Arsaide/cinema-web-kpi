@@ -12,9 +12,16 @@ interface IAdminList {
 	headerItems: string[];
 	isLoading: boolean;
 	removeHandler?: (id: string) => void;
+	cancelHandler?: (id: string) => void;
 }
 
-const AdminList: FC<IAdminList> = ({ listItems, headerItems, isLoading, removeHandler }) => {
+const AdminList: FC<IAdminList> = ({
+	listItems,
+	headerItems,
+	isLoading,
+	removeHandler,
+	cancelHandler,
+}) => {
 	return (
 		<div className={'mb-12'}>
 			<AdminListHeader headerItems={headerItems} />
@@ -31,6 +38,7 @@ const AdminList: FC<IAdminList> = ({ listItems, headerItems, isLoading, removeHa
 						key={item.id}
 						listItem={item}
 						removeHandler={removeHandler ? () => removeHandler(item.id) : undefined}
+						cancelHandler={cancelHandler ? () => cancelHandler(item.id) : undefined}
 					/>
 				))
 			) : (
