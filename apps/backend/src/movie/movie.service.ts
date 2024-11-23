@@ -28,6 +28,8 @@ export class MovieService {
                             contains: searchTerm,
                             mode: 'insensitive',
                         },
+                    },
+                    {
                         description: {
                             contains: searchTerm,
                             mode: 'insensitive',
