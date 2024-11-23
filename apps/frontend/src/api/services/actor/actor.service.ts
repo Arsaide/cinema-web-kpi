@@ -4,7 +4,7 @@ import { API_URL } from '@/config/api.config';
 
 import { IActor, IActorEditInput } from '@/types/actor.types';
 
-class GenreService {
+class ActorService {
 	async getAll(searchTerm?: string) {
 		const { data } = await axiosClassic.get<IActor[]>(API_URL.actors(''), {
 			params: searchTerm
@@ -38,4 +38,4 @@ class GenreService {
 	}
 }
 
-export const genreService = new GenreService();
+export const actorService = new ActorService();

@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { ChangeEvent, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { movieService } from '@/api/services/movie/movie.service';
+import { genreService } from '@/api/services/genre/genre.service';
 
 import { ITableItem } from '@/components/ui/admin/admin-table/admin-list/admin-list.interface';
 
@@ -11,25 +11,23 @@ import { ADMIN_URL, PUBLIC_URL } from '@/config/url.config';
 
 import { useDebounce } from '@/hooks/useDebounce';
 
-import { getGenresList } from '@/utils/movie/getGenresList';
-
-export const useAdminMovies = () => {
+export const useAdminGenres = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
 	const queryClient = useQueryClient();
 
-	const { data: movies, isLoading } = useQuery({
-		queryKey: ['get movies for admin dashboard', debouncedSearch],
-		queryFn: () => movieService.getAll(debouncedSearch),
+	const { data: genres, isLoading } = useQuery({
+		queryKey: ['get genres for admin dashboard', debouncedSearch],
+		queryFn: () => genreService.getAll(debouncedSearch),
 		select: data =>
 			data.map(
-				(movie): ITableItem => ({
-					id: movie.id,
-					viewUrl: PUBLIC_URL.movie(movie.slug),
-					editUrl: ADMIN_URL.movieEdit(movie.id),
-					items: [movie.title, getGenresList(movie.genres), String(movie.views)],
+				(genre): ITableItem => ({
+					id: genre.id,
+					viewUrl: PUBLIC_URL.genre(genre.slug),
+					editUrl: ADMIN_URL.genreEdit(genre.id),
+					items: [genre.name, genre.slug],
 				}),
 			),
 	});
@@ -41,43 +39,43 @@ export const useAdminMovies = () => {
 	const { push } = useRouter();
 
 	const { mutateAsync: createAsync } = useMutation({
-		mutationKey: ['create movie'],
-		mutationFn: () => movieService.create(),
+		mutationKey: ['create genre'],
+		mutationFn: () => genreService.create(),
 		onSuccess({ data: id }) {
-			toast.success('Movie created successfully!');
-			push(ADMIN_URL.movieEdit(id));
+			toast.success('Genre created successfully!');
+			push(ADMIN_URL.genreEdit(id));
 			queryClient.invalidateQueries({
-				queryKey: ['get movie for admin dashboard'],
+				queryKey: ['get genres for admin dashboard'],
 			});
 		},
 		onError() {
-			toast.error('Error while created movie');
+			toast.error('Error while created genre');
 		},
 	});
 
 	const { mutateAsync: deleteAsync } = useMutation({
-		mutationKey: ['delete movie'],
-		mutationFn: (movieId: string) => movieService.delete(movieId),
+		mutationKey: ['delete genre'],
+		mutationFn: (genreId: string) => genreService.delete(genreId),
 		onSuccess() {
-			toast.success('Movie deleted');
+			toast.success('Genre deleted');
 			queryClient.invalidateQueries({
-				queryKey: ['get movies for admin dashboard'],
+				queryKey: ['get genres for admin dashboard'],
 			});
 		},
 		onError() {
-			toast.error('Error while deleting movie');
+			toast.error('Error while deleting genre');
 		},
 	});
 
 	return useMemo(
 		() => ({
 			handleSearch,
-			movies,
+			genres,
 			searchTerm,
 			isLoading,
 			deleteAsync,
 			createAsync,
 		}),
-		[handleSearch, searchTerm, movies, isLoading, deleteAsync, createAsync],
+		[handleSearch, searchTerm, genres, isLoading, deleteAsync, createAsync],
 	);
 };
