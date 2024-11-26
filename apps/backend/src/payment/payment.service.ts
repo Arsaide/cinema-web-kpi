@@ -144,7 +144,7 @@ export class PaymentService {
 
         return this.prisma.payment.update({
             where: { id },
-            data: { status: 'CANCELLED' },
+            data: { status: PaymentStatus.CANCELLED },
         });
     }
 
