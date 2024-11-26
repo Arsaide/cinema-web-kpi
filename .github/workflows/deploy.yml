@@ -46,7 +46,22 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ssh_key $USER@$HOST << "EOF"
             cd /var/www/cinema-web-kpi/
             git pull origin main
-     
+          
+            if git diff --name-only HEAD^ HEAD | grep -q "schema.prisma"; then
+              echo "Changes detected in Prisma schema. Running migrations..."
+              cd /var/www/cinema-web-kpi/apps/backend
+          
+              npx prisma migrate deploy
+          
+              cd /var/www/cinema-web-kpi/
+            fi
+          
+            if git diff --name-only HEAD^ HEAD | grep -q "package.json"; then
+                echo "Changes detected in Package json. Running installation..."
+                cd /var/www/cinema-web-kpi/
+                yarn install
+            fi
+            
             turbo build
             pm2 restart cinema-project
 

@@ -35,6 +35,7 @@ import { IUser } from '@/types/user.types';
 export enum PaymentStatus {
 	PENDING = 'PENDING',
 	PAYED = 'PAYED',
+	CANCELLED = 'CANCELLED',
 }
 
 interface IPaymentCheckoutSuccess {

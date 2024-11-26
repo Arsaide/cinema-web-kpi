@@ -107,4 +107,5 @@ enum UserRole {
 enum PaymentStatus {
   PENDING
   PAYED
+  CANCELLED
 }

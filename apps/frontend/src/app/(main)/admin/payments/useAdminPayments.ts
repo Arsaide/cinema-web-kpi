@@ -18,7 +18,6 @@ export const useAdminPayments = () => {
 				(payments): ITableItem => ({
 					id: payments.id,
 					items: [
-						payments.user.name,
 						payments.user.email,
 						payments.user.isHasPremium ? 'Yes' : 'No',
 						String(payments.amount),
