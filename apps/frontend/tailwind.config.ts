@@ -10,6 +10,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: '#561b8c',
+				primary_opacity: 'rgba(86,27,140,0.5)',
 				black: '#000000',
 				white: '#FFFFFF',
 				gray: {

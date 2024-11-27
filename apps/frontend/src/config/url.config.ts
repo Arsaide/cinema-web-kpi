@@ -13,7 +13,7 @@ export const PUBLIC_URL = {
 	genre: (slug = '') => PUBLIC_URL.root(`/genre/${slug}`),
 	movie: (slug = '') => PUBLIC_URL.root(`/movie/${slug}`),
 
-	premium: () => PUBLIC_URL.root('/premium'),
+	payments: () => PUBLIC_URL.root('/payments'),
 };
 
 export const DASHBOARD_URL = {

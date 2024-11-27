@@ -29,7 +29,7 @@ const Subscribe = () => {
 					? 'Unlimited access to all videos!'
 					: 'Get unlimited access to all movies!'}
 			</p>
-			<Link href={user?.isHasPremium ? PUBLIC_URL.explorer() : PUBLIC_URL.premium()}>
+			<Link href={user?.isHasPremium ? PUBLIC_URL.explorer() : PUBLIC_URL.payments()}>
 				<Button size={'sm'} className={styles.button}>
 					{user?.isHasPremium ? 'Watch now!' : 'Subscribe now!'}
 				</Button>
