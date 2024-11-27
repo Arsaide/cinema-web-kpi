@@ -2,6 +2,6 @@
 	@apply flex flex-col h-full;
 
 	main {
-		@apply pl-72 pt-[80px];
+		@apply pl-72 pt-[80px] z-10;
 	}
 }

@@ -15,7 +15,7 @@ const Payments = () => {
 			<Heading>💵 Payments</Heading>
 			<AdminList
 				listItems={payments || []}
-				headerItems={['Email', 'Premium', 'Amount', 'Status']}
+				headerItems={['User id', 'Premium', 'Amount', 'Status', 'Date']}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 				cancelHandler={cancelAsync}

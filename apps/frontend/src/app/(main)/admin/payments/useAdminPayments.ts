@@ -7,6 +7,11 @@ import { reviewService } from '@/api/services/review/review.service';
 
 import { ITableItem } from '@/components/ui/admin/admin-table/admin-list/admin-list.interface';
 
+import { ADMIN_URL } from '@/config/url.config';
+
+import { formatDate } from '@/utils/date/formateDate';
+import { convertPrice } from '@/utils/string/convertPrice';
+
 export const useAdminPayments = () => {
 	const queryClient = useQueryClient();
 
@@ -17,11 +22,13 @@ export const useAdminPayments = () => {
 			data.map(
 				(payments): ITableItem => ({
 					id: payments.id,
+					editUrl: ADMIN_URL.userEdit(payments.user.id),
 					items: [
-						payments.user.email,
+						payments.user.id.slice(0, 9) + '...',
 						payments.user.isHasPremium ? 'Yes' : 'No',
-						String(payments.amount),
+						convertPrice(payments.amount),
 						payments.status,
+						formatDate(payments.createdAt),
 					],
 				}),
 			),

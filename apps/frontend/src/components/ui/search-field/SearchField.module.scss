@@ -2,7 +2,7 @@
 	@apply block relative border border-gray-700 rounded-lg;
 
 	input {
-		@apply rounded-lg py-2 px-12 w-full block outline-0 text-white shadow bg-transparent border-none outline-none;
+		@apply bg-gray-800 rounded-lg py-2 px-12 w-full block outline-0 text-white shadow border-none outline-none;
 
 		&::placeholder {
 			@apply text-gray-950;

@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { FC, PropsWithChildren, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
+import StarsCanvas from '@/components/canvas/stars-canvas-bg/StarsCanvas';
+
 const Providers: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const [client] = useState(
 		new QueryClient({
@@ -29,6 +31,7 @@ const Providers: FC<PropsWithChildren<unknown>> = ({ children }) => {
 				}}
 			/>
 			{children}
+			<StarsCanvas />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
 	);

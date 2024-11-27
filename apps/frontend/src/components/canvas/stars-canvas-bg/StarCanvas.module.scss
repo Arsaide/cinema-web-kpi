@@ -1,0 +1,7 @@
+.wrapper {
+	@apply w-full h-auto fixed inset-0 z-[1];
+}
+
+.blackhole {
+	@apply rotate-180 absolute top-[-410px]   left-0 z-[1];
+}
