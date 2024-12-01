@@ -154,7 +154,7 @@ const SelectField = ({
 						/>
 						<ul className={styles.select} onScroll={handleScroll}>
 							{filteredOptions.length === 0 ? (
-								<li className={styles.empty}>Ничего не найдено</li>
+								<li className={styles.empty}>Nothing found!</li>
 							) : (
 								visibleOptions.map(option => (
 									<Option
