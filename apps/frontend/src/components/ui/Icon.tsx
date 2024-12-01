@@ -9,6 +9,8 @@ interface IIcon {
 	className?: string;
 }
 
+export const iconNames = Object.keys(Icons);
+
 export const Icon: FC<IIcon> = ({ name, className }) => {
 	const IconComponent = Icons[name];
 

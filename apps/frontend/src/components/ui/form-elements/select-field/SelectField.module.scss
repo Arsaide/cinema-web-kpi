@@ -1,0 +1,45 @@
+.field {
+	@apply text-left relative rounded-lg bg-gray-800 text-sm my-2;
+}
+
+.arrow {
+	@apply absolute right-1.5 top-[13px];
+}
+
+.label {
+	@apply text-[15px] font-medium;
+}
+
+.value {
+	@apply h-10 w-full px-4 py-2 flex gap-3 items-center;
+
+	> .placeholder {
+		color: gray;
+	}
+
+	> .icon {
+	}
+
+	> .title {
+	}
+}
+
+.dropdown {
+	@apply absolute w-full bg-gray-800 rounded-lg z-[51];
+
+	> .search {
+		@apply w-full h-8 py-4 px-4 border-b border-gray-500 focus-visible:outline-none bg-transparent disabled:cursor-not-allowed disabled:opacity-50 mb-3 mt-1 rounded-t-lg;
+	}
+
+	> .select {
+		@apply w-full px-4 overflow-y-scroll h-[250px];
+
+		> .option {
+			@apply cursor-pointer py-3 flex gap-3;
+		}
+	}
+}
+
+.error {
+	@apply relative z-10 text-red-500 font-medium text-sm mb-2;
+}

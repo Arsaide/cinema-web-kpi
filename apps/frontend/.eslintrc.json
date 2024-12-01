@@ -16,6 +16,7 @@
 		"react-hooks/exhaustive-deps": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"no-console": ["error", { "allow": ["warn", "error"] }],
-		"@typescript-eslint/no-non-null-asserted-optional-chain": "off"
+		"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+		"@typescript-eslint/no-unused-expressions": "off"
 	}
 }

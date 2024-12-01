@@ -24,3 +24,8 @@ export interface ITextEditor extends Omit<TypeEditorField, 'editorState'> {
 	onChange: (...event: any[]) => void;
 	value: string;
 }
+
+export interface SelectOption {
+	title: string;
+	value: string;
+}

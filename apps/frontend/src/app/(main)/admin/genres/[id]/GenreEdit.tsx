@@ -1,15 +1,17 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { useGenreEdit } from '@/app/(main)/admin/genres/[id]/useGenreEdit';
 
+import { TypeIconName, iconNames } from '@/components/ui/Icon';
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
 import formStyles from '@/components/ui/form-elements/AdminForm.module.scss';
 import Button from '@/components/ui/form-elements/button/Button';
 import Field from '@/components/ui/form-elements/field/Field';
+import SelectField from '@/components/ui/form-elements/select-field/SelectField';
 import SlugField from '@/components/ui/form-elements/slug-field/SlugField';
 import Heading from '@/components/ui/heading/Heading';
 
@@ -38,6 +40,7 @@ const GenreEdit = ({ genreId }: IGenreEdit) => {
 		control,
 		setValue,
 		getValues,
+		trigger,
 	} = useForm<IGenreEditInput>({
 		mode: 'onChange',
 		values: {
@@ -47,6 +50,33 @@ const GenreEdit = ({ genreId }: IGenreEdit) => {
 			icon: genre?.icon! || '',
 		},
 	});
+
+	const [icons, setIcons] = useState(genre?.icon || '');
+
+	useEffect(() => {
+		if (genre?.icon) {
+			setIcons(genre?.icon);
+		}
+	}, [genre]);
+
+	const handleIconsSelect = (value: string) => {
+		setIcons(value);
+		setValue('icon', value as TypeIconName);
+		trigger('icon');
+	};
+
+	const handleSlugChange = () => {
+		const slugValue = generateSlug(getValues('name'));
+		setValue('slug', slugValue);
+		trigger('slug');
+	};
+
+	const iconsArray = iconNames.map(name => ({
+		title: name,
+		value: name,
+	}));
+
+	const selectedIcons = iconsArray.find(item => item.value === icons);
 
 	return (
 		<div className={'px-6'}>
@@ -73,17 +103,21 @@ const GenreEdit = ({ genreId }: IGenreEdit) => {
 							<div style={{ width: '31%' }}>
 								<SlugField
 									register={register}
-									generate={() => setValue('slug', generateSlug(getValues('name')))}
-									error={errors.name}
+									generate={handleSlugChange}
+									error={errors.slug}
 								/>
 							</div>
 
-							<Field
+							<SelectField
 								{...register('icon', {
 									required: 'Icon is required',
 								})}
+								selected={selectedIcons || null}
+								options={iconsArray}
+								error={errors.icon}
 								placeholder={'Icon'}
-								error={errors.name}
+								onSelectChange={handleIconsSelect}
+								icons={true}
 								style={{ width: '31%' }}
 							/>
 						</div>
