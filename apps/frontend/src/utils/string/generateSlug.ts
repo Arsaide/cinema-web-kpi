@@ -4,7 +4,7 @@ const translit = (str: string): string => {
 			'-',
 		);
 	const en =
-		"A-a-B-b-V-v-G-g-D-d-E-e-E-e-ZH-zh-Z-z-I-i-I-i-J-j-K-k-L-l-M-m-N-n-O-o-P-p-R-r-S-s-T-t-U-u-F-f-H-h-TS-ts-CH-ch-SH-sh-SCH-sch-'-'-Y-y".split(
+		"A-a-B-b-V-v-G-g-D-d-E-e-E-e-ZH-zh-Z-z-I-i-Y-y-K-k-L-l-M-m-N-n-O-o-P-p-R-r-S-s-T-t-U-u-F-f-H-h-TS-ts-CH-ch-SH-sh-SCH-sch-'-'-Y-y-Y-y-E-e-YU-yu-YA-ya".split(
 			'-',
 		);
 
