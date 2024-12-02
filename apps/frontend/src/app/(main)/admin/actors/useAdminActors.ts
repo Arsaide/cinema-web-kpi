@@ -27,7 +27,7 @@ export const useAdminActors = () => {
 					id: actor.id,
 					viewUrl: PUBLIC_URL.actor(actor.slug),
 					editUrl: ADMIN_URL.actorEdit(actor.id),
-					items: [actor.name, actor.slug],
+					items: [actor.name, String(actor.movies.length)],
 				}),
 			),
 	});

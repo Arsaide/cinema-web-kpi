@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { FileResponse } from './file.interface';
 import { path } from 'app-root-path';
 import { ensureDir, unlink, writeFile } from 'fs-extra';
@@ -99,6 +99,15 @@ export class FileService {
         );
 
         return res;
+    }
+
+    async deleteFile(filePath: string) {
+        const absolutePath = `${path}${filePath}`;
+        try {
+            await unlink(absolutePath);
+        } catch (error) {
+            throw new InternalServerErrorException(`Delete "${filePath}" error: ` + error);
+        }
     }
 
     // Разрешение видео

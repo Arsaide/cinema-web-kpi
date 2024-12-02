@@ -18,6 +18,10 @@ class FileService {
 			},
 		});
 	}
+
+	async delete(path: string) {
+		return axiosWithAuth.post(API_URL.files('/delete'), path);
+	}
 }
 
 export const fileService = new FileService();

@@ -18,7 +18,7 @@ const Actors = () => {
 			<AdminHeader searchTerm={searchTerm} handleSearch={handleSearch} onClick={createAsync} />
 			<AdminList
 				listItems={actors || []}
-				headerItems={['Name', 'Slug']}
+				headerItems={['Name', 'Movies']}
 				isLoading={isLoading}
 				removeHandler={deleteAsync}
 			/>
