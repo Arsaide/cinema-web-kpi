@@ -26,13 +26,13 @@ export class FileService {
                 let filePath = `${uploadFolder}/${fileName}`;
 
                 if (file.mimetype.startsWith('image/')) {
-                    fileName = `${fileName}.webp`;
+                    fileName = `${fileName}`;
                     filePath = `${uploadFolder}/${fileName}`;
 
                     await sharp(file.buffer).webp({ quality: 90 }).toFile(filePath);
 
                     return {
-                        url: `/uploads/images${folder}/${fileName}`,
+                        url: `/uploads/${folder}/${fileName}`,
                         name: fileName,
                         type: 'image',
                     };

@@ -93,7 +93,7 @@ const GenreEdit = ({ genreId }: IGenreEdit) => {
 						<div className={formStyles.fields}>
 							<Field
 								{...register('name', {
-									required: 'Name is not required',
+									required: 'Name is required',
 								})}
 								placeholder={'Name'}
 								error={errors.name}

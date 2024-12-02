@@ -1,5 +1,5 @@
 import { EditorProps } from 'draft-js';
-import { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes } from 'react';
 import { FieldError, UseFormRegister } from 'react-hook-form';
 
 export interface IField extends InputHTMLAttributes<HTMLInputElement> {
@@ -28,4 +28,14 @@ export interface ITextEditor extends Omit<TypeEditorField, 'editorState'> {
 export interface SelectOption {
 	title: string;
 	value: string;
+}
+
+export interface IUploadField {
+	folder?: string;
+	value?: string;
+	onChange: (...event: any[]) => void;
+	placeholder: string;
+	error?: FieldError;
+	style?: CSSProperties;
+	isNoImage?: boolean;
 }
