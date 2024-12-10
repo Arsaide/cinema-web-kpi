@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { FileResponse } from './file.interface';
 import { path } from 'app-root-path';
-import { ensureDir, unlink, writeFile } from 'fs-extra';
+import { access, ensureDir, unlink, writeFile } from 'fs-extra';
 import * as crypto from 'crypto';
 import * as dayjs from 'dayjs';
 import * as sharp from 'sharp';
@@ -104,9 +104,16 @@ export class FileService {
     async deleteFile(filePath: string) {
         const absolutePath = `${path}${filePath}`;
         try {
+            await access(absolutePath);
             await unlink(absolutePath);
         } catch (error) {
-            throw new InternalServerErrorException(`Delete "${filePath}" error: ` + error);
+            if (error.code === 'ENOENT') {
+                console.warn(`File "${filePath}" not found. Skipping deletion.`);
+            } else {
+                throw new InternalServerErrorException(
+                    `Delete "${filePath}" error: ` + error.message,
+                );
+            }
         }
     }
 

@@ -3,10 +3,14 @@ import { PrismaService } from '../prisma.service';
 import { generateSlug } from '../utils/generate-slugs';
 import { UpdateActorDto } from './dto/update-actor.dto';
 import { returnActorObject } from './return-actor.object';
+import { FileService } from '../file/file.service';
 
 @Injectable()
 export class ActorService {
-    constructor(private prisma: PrismaService) {}
+    constructor(
+        private prisma: PrismaService,
+        private fileService: FileService,
+    ) {}
 
     async getAll(searchTerm?: string) {
         if (searchTerm) this.search(searchTerm);
@@ -75,6 +79,16 @@ export class ActorService {
     }
 
     async update(id: string, dto: UpdateActorDto) {
+        const oldData = await this.prisma.actor.findUnique({
+            where: {
+                id: id,
+            },
+        });
+
+        if (oldData.photoUrl) {
+            await this.fileService.deleteFile(oldData.photoUrl);
+        }
+
         return this.prisma.actor.update({
             where: {
                 id,
