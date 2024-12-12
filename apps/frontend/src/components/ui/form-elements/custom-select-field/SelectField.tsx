@@ -11,8 +11,8 @@ import React, {
 import { FieldError } from 'react-hook-form';
 
 import { Icon, TypeIconName } from '@/components/ui/Icon';
+import Option from '@/components/ui/form-elements/custom-select-field/Option';
 import { SelectOption } from '@/components/ui/form-elements/form.interface';
-import Option from '@/components/ui/form-elements/select-field/Option';
 
 import styles from './SelectField.module.scss';
 

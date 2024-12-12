@@ -1,6 +1,7 @@
-import { EditorProps } from 'draft-js';
-import { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes } from 'react';
-import { FieldError, UseFormRegister } from 'react-hook-form';
+import type { EditorProps } from 'draft-js';
+import type { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes } from 'react';
+import type { ControllerRenderProps, FieldError, UseFormRegister } from 'react-hook-form';
+import type { Options } from 'react-select';
 
 export interface IField extends InputHTMLAttributes<HTMLInputElement> {
 	placeholder?: string;
@@ -23,6 +24,20 @@ type TypeEditorField = EditorProps & IField;
 export interface ITextEditor extends Omit<TypeEditorField, 'editorState'> {
 	onChange: (...event: any[]) => void;
 	value: string;
+}
+
+export interface IOption {
+	label: string;
+	value: string;
+}
+
+export interface ISelect {
+	placeholder?: string;
+	options: Options<IOption>;
+	error?: FieldError;
+	isMulti?: boolean;
+	field: ControllerRenderProps<any, any>;
+	isLoading?: boolean;
 }
 
 export interface SelectOption {

@@ -8,7 +8,7 @@ export interface IMovie {
 	bigPoster: string;
 	title: string;
 	description: string;
-	year: string;
+	year: number;
 	duration: number;
 	slug: string;
 	country: string;
@@ -16,7 +16,7 @@ export interface IMovie {
 	actors: IActor[];
 	reviews: IReview[];
 	views: number;
-	videoUrl: string[];
+	videoUrls: string[];
 }
 
 export interface IMovieEditInput

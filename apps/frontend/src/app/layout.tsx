@@ -10,6 +10,8 @@ import { APP_URL } from '@/config/url.config';
 
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants';
 
+import '../assets/styles/react-select.scss';
+
 export const metadata: Metadata = {
 	title: {
 		absolute: SITE_NAME,

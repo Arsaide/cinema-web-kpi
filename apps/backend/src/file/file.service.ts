@@ -44,6 +44,7 @@ export class FileService {
                     await writeFile(filePath, file.buffer);
 
                     const originalResolution = await this.getVideoResolution(filePath);
+                    const duration = await this.getVideoDuration(filePath);
 
                     const availableResolution = [480, 720, 1080, 1280, 1440];
                     const resolutionToConvert = availableResolution.filter(
@@ -86,6 +87,7 @@ export class FileService {
 
                     return {
                         videoUrls: videoUrls,
+                        duration,
                         type: 'video',
                     };
                 }
@@ -126,6 +128,18 @@ export class FileService {
                 } else {
                     const { width, height } = metadata.streams[0];
                     resolve({ width, height });
+                }
+            });
+        });
+    }
+
+    async getVideoDuration(filePath: string): Promise<number> {
+        return new Promise((resolve, reject) => {
+            ffmpeg.ffprobe(filePath, (err, metadata) => {
+                if (err) {
+                    reject(new Error('Failed to retrieve video duration'));
+                } else {
+                    resolve(metadata.format.duration);
                 }
             });
         });

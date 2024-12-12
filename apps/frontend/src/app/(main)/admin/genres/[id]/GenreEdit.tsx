@@ -10,8 +10,8 @@ import { TypeIconName, iconNames } from '@/components/ui/Icon';
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
 import formStyles from '@/components/ui/form-elements/AdminForm.module.scss';
 import Button from '@/components/ui/form-elements/button/Button';
+import SelectField from '@/components/ui/form-elements/custom-select-field/SelectField';
 import Field from '@/components/ui/form-elements/field/Field';
-import SelectField from '@/components/ui/form-elements/select-field/SelectField';
 import SlugField from '@/components/ui/form-elements/slug-field/SlugField';
 import Heading from '@/components/ui/heading/Heading';
 

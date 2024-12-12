@@ -1,5 +1,5 @@
 .uploadField {
-	@apply relative;
+	@apply relative z-0;
 
 	.uploadFlex {
 		@apply flex;
@@ -22,6 +22,10 @@
 			&:hover > input {
 				@apply opacity-100;
 			}
+		}
+
+		.error {
+			@apply text-red-500 font-medium text-sm mb-2;
 		}
 
 		> .container {

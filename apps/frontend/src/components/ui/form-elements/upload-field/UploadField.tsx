@@ -25,17 +25,15 @@ const UploadField = ({
 					<span>{placeholder}</span>
 					<input type={'file'} onChange={uploadImage} />
 					{error && <div className={styles.error}>{error.message}</div>}
+					{isLoading ? 'loading' : 'no loading'}
 				</label>
-
-				{!isNoImage && (
-					<div className={styles.container}>
-						{isLoading ? (
-							<SkeletonLoader className={'w-full h-full'} />
-						) : (
-							value && <Image src={value} alt={''} fill unoptimized />
-						)}
-					</div>
-				)}
+				<div className={styles.container}>
+					{isLoading ? (
+						<SkeletonLoader className={'w-full h-full'} />
+					) : (
+						value && !isNoImage && <Image src={value} alt={''} fill unoptimized />
+					)}
+				</div>
 			</div>
 		</div>
 	);

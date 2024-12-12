@@ -5,6 +5,9 @@ import { API_URL } from '@/config/api.config';
 interface IFile {
 	url: string;
 	name: string;
+	videoUrls?: { quality: string; url: string }[];
+	duration?: number;
+	type?: string;
 }
 
 class FileService {

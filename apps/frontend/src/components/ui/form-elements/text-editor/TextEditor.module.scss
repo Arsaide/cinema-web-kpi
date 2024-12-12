@@ -24,4 +24,8 @@
 			@apply h-80 border rounded-b-lg border-gray-800 bg-gray-800 px-4 overflow-hidden;
 		}
 	}
+
+	.error {
+		@apply text-red-500 font-medium text-sm mb-2;
+	}
 }

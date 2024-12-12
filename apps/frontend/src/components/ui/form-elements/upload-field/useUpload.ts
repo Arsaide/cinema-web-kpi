@@ -28,19 +28,18 @@ export const useUpload: TypeUpload = (onChange, folder) => {
 
 	const uploadImage = useCallback(
 		async (event: ChangeEvent<HTMLInputElement>) => {
-			setIsLoading(true);
-
 			const files = event.target.files;
 
 			if (files?.length) {
+				setIsLoading(true);
 				const formData = new FormData();
 				formData.append('file', files[0]);
 
-				await mutateAsync(formData);
-
-				setTimeout(() => {
+				try {
+					await mutateAsync(formData);
+				} finally {
 					setIsLoading(false);
-				}, 2000);
+				}
 			}
 		},
 		[mutateAsync],
