@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn cache clean
+          npm install yarn -g
           yarn install
           yarn turbo run lint
           yarn turbo run build
