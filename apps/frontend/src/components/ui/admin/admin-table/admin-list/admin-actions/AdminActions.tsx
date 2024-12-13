@@ -30,7 +30,7 @@ const AdminActions: FC<IAdminActions> = ({ editUrl, viewUrl, removeHandler, canc
 			)}
 			{cancelHandler && (
 				<button onClick={cancelHandler}>
-					<Icon name={'LuXCircle'} />
+					<Icon name={'LuX'} />
 				</button>
 			)}
 			{removeHandler && (
