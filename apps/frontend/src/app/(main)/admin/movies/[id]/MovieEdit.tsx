@@ -107,6 +107,18 @@ const MovieEdit = ({ movieId }: IMovieEdit) => {
 							/>
 
 							<Field
+								{...register('duration', {
+									required: 'Duration is required',
+									validate: {
+										minYear: value => Number(value) >= 1 || 'Duration should be more',
+									},
+								})}
+								placeholder={'Duration'}
+								error={errors.duration}
+								style={{ width: '31%' }}
+							/>
+
+							<Field
 								{...register('year', {
 									required: 'Year is required',
 									validate: {
