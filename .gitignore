@@ -3,21 +3,18 @@
 node_modules
 uploads
 packages
-yarn.lock
 /logs
 
 /apps/frontend/.env
 /apps/frontend/.turbo
 /apps/frontend/.next
 /apps/frontend/node_modules
-/apps/frontend/yarn.lock
 /apps/frontend/README.md
 
 /apps/backend/.env
 /apps/backend/.turbo
 /apps/backend/dist
 /apps/backend/node_modules
-/apps/backend/yarn.lock
 /apps/backend/uploads
 /apps/backend/prisma/migrations
 /apps/backend/README.md
