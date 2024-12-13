@@ -30,7 +30,6 @@ export const useMovieEdit = (movieId: string) => {
 
 	const onSubmit: SubmitHandler<IMovieEditInput> = async data => {
 		data.year = Number(data.year);
-		data.duration = Number(data.duration);
 
 		await mutateAsync(data);
 	};

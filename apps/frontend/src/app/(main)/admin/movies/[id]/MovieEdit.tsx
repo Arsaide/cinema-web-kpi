@@ -54,7 +54,6 @@ const MovieEdit = ({ movieId }: IMovieEdit) => {
 			description: movie?.description || '',
 			slug: movie?.slug || '',
 			country: movie?.country || '',
-			duration: movie?.duration || 0,
 			year: movie?.year || 0,
 			poster: movie?.poster || '',
 			bigPoster: movie?.bigPoster || '',
@@ -103,18 +102,6 @@ const MovieEdit = ({ movieId }: IMovieEdit) => {
 								})}
 								placeholder={'Country'}
 								error={errors.country}
-								style={{ width: '31%' }}
-							/>
-
-							<Field
-								{...register('duration', {
-									required: 'Duration is required',
-									validate: {
-										minYear: value => Number(value) >= 1 || 'Duration should be more',
-									},
-								})}
-								placeholder={'Duration'}
-								error={errors.duration}
 								style={{ width: '31%' }}
 							/>
 

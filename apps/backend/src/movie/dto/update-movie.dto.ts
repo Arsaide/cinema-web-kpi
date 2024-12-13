@@ -23,9 +23,6 @@ export class UpdateMovieDto {
     @IsNumber()
     year: number;
 
-    @IsNumber()
-    duration: number;
-
     @IsArray()
     @IsString({ each: true })
     genres: string[];

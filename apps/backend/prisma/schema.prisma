@@ -34,7 +34,7 @@ model Movie {
   poster    String
   bigPoster String   @map("big_poster")
   year      Int      @default(0)
-  duration  Int      @default(0)
+  duration  Int?     @default(0)
   country    String   @default("")
   views     Int      @default(0)
   videoUrls  String[]   @map("video_urls")

@@ -9,7 +9,6 @@ export interface IMovie {
 	title: string;
 	description: string;
 	year: number;
-	duration: number;
 	slug: string;
 	country: string;
 	genres: IGenre[];

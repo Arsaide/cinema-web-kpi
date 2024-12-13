@@ -3,10 +3,16 @@ import { PrismaService } from '../prisma.service';
 import { returnMovieObject } from './return-movie.object';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { generateSlug } from '../utils/generate-slugs';
+import { FileService } from '../file/file.service';
+import { path } from 'app-root-path';
+import * as fs from 'node:fs';
 
 @Injectable()
 export class MovieService {
-    constructor(private prisma: PrismaService) {}
+    constructor(
+        private prisma: PrismaService,
+        private fileService: FileService,
+    ) {}
 
     async getAll(searchTerm?: string) {
         if (searchTerm) return this.search(searchTerm);
@@ -144,6 +150,24 @@ export class MovieService {
     }
 
     async update(id: string, dto: UpdateMovieDto) {
+        let duration = 0;
+
+        if (dto.videoUrls && dto.videoUrls.length > 0) {
+            try {
+                const uploadFolder = `${path}${dto.videoUrls[0]}`;
+
+                if (fs.existsSync(uploadFolder)) {
+                    const videoDuration = await this.fileService.getVideoDuration(uploadFolder);
+                    duration = Number(videoDuration);
+                } else {
+                    duration = 0;
+                }
+            } catch (error) {
+                console.error(`Failed to get video duration for movie ID ${id}:`, error);
+                duration = 0;
+            }
+        }
+
         return this.prisma.movie.update({
             where: {
                 id,
@@ -154,9 +178,10 @@ export class MovieService {
                 description: dto.description,
                 bigPoster: dto.bigPoster,
                 poster: dto.poster,
+                country: dto.country,
                 videoUrls: dto.videoUrls,
                 year: dto.year,
-                duration: dto.duration,
+                duration,
                 genres: {
                     set: dto.genres?.map(genreId => ({ id: genreId })),
                     disconnect: dto.genres
