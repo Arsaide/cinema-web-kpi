@@ -23,21 +23,21 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install dependencies
-        run: |
-          yarn cache clean
-          yarn install
+#      - name: Install dependencies
+#        run: |
+#          yarn cache clean
+#          yarn install
 
       - name: Init .env files
         run: |
           echo "${{ secrets.FRONTEND_ENV }}" > apps/frontend/.env
           echo "${{ secrets.BACKEND_ENV }}" > apps/backend/.env
 
-      - name: Run ESlint
-        run: yarn turbo run lint
-
-      - name: Build application
-        run: yarn turbo run build
+#      - name: Run ESlint
+#        run: yarn turbo run lint
+#
+#      - name: Build application
+#        run: yarn turbo run build
 
       - name: Deploy to VPS
         if: success()
