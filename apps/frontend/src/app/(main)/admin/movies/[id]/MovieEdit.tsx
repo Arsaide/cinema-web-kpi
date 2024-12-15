@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { useAdminActors } from '@/app/(main)/admin/movies/[id]/useAdminActors';
 import { useAdminGenres } from '@/app/(main)/admin/movies/[id]/useAdminGenres';
-import { useMovieEdit } from '@/app/(main)/admin/movies/[id]/useMovieEdit';
+import { useUserEdit } from '@/app/(main)/admin/movies/[id]/useMovieEdit';
 
 import SkeletonLoader from '@/components/ui/SkeletonLoader';
 import formStyles from '@/components/ui/form-elements/AdminForm.module.scss';
@@ -34,7 +34,7 @@ const DynamicTextEditor = dynamic(
 );
 
 const MovieEdit = ({ movieId }: IMovieEdit) => {
-	const { movie, onSubmit, isLoading } = useMovieEdit(movieId);
+	const { movie, onSubmit, isLoading } = useUserEdit(movieId);
 
 	const { genres, isGenresLoading } = useAdminGenres();
 	const { actors, isActorsLoading } = useAdminActors();
@@ -199,7 +199,7 @@ const MovieEdit = ({ movieId }: IMovieEdit) => {
 									<UploadVideoField
 										error={error}
 										folder={`movies/${movieId}`}
-										placeholder='Загрузите видео'
+										placeholder='Upload your video'
 										style={{ marginBottom: 35 }}
 										onChange={onChange}
 										value={value}

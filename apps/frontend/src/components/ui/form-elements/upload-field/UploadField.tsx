@@ -25,7 +25,6 @@ const UploadField = ({
 					<span>{placeholder}</span>
 					<input type={'file'} onChange={uploadImage} />
 					{error && <div className={styles.error}>{error.message}</div>}
-					{isLoading ? 'loading' : 'no loading'}
 				</label>
 				<div className={styles.container}>
 					{isLoading ? (

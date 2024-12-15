@@ -6,7 +6,7 @@ import { movieService } from '@/api/services/movie/movie.service';
 
 import { IMovieEditInput } from '@/types/movie.types';
 
-export const useMovieEdit = (movieId: string) => {
+export const useUserEdit = (movieId: string) => {
 	const { data: movie, isLoading } = useQuery({
 		queryKey: ['movie', movieId],
 		queryFn: () => movieService.getById(movieId),
