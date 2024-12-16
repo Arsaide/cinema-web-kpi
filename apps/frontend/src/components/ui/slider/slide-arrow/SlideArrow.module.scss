@@ -1,5 +1,5 @@
 .arrow {
-	@apply flex items-center justify-center rounded-full bg-white/30 text-white text-2xl p-3 animate-fade absolute z-30 bottom-0;
+	@apply flex items-center justify-center rounded-full bg-black/70 text-white text-2xl p-3 animate-fade absolute z-[51] bottom-7;
 
 	&.left {
 		@apply right-24;

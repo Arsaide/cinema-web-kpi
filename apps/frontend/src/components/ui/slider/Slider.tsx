@@ -19,7 +19,7 @@ const Slider = ({ slides }: ISlider) => {
 		<div className={styles.slider}>
 			{isPrev && <SlideArrow variant={'left'} clickHandler={() => handleClick('prev')} />}
 
-			<CSSTransition in={slideIn} timeout={300} classNames={'slide-animation'} unmountOnExit>
+			<CSSTransition in={slideIn} timeout={300} classNames='slide-animation' unmountOnExit>
 				<SlideItem slide={slides[index]} />
 			</CSSTransition>
 
