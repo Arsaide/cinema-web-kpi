@@ -27,6 +27,7 @@ const SearchList: FC<ISearchList> = ({ movies }) => {
 							objectPosition={'top'}
 							className={'rounded-md'}
 						/>
+						<div>{movie.title}</div>
 					</Link>
 				))
 			) : (

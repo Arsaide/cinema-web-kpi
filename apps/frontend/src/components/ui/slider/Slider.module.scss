@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables';
 
 .slider {
-	@apply relative;
+	@apply relative z-[20];
 
 	.slide {
 		@apply relative h-[350px] py-4 overflow-hidden shadow-xl flex items-center;
