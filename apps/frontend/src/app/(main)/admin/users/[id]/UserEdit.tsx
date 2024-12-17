@@ -27,9 +27,6 @@ const UserEdit = ({ userId }: IUserEdit) => {
 		register,
 		formState: { errors },
 		control,
-		setValue,
-		getValues,
-		trigger,
 	} = useForm<IUserEditInput>({
 		mode: 'onChange',
 		values: {
