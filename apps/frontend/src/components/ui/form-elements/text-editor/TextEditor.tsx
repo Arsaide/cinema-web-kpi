@@ -5,12 +5,14 @@ import { ContentState, EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import React, { useEffect, useState } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
+import { Editor as WysiwygEditor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import { ITextEditor } from '@/components/ui/form-elements/form.interface';
 
 import styles from './TextEditor.module.scss';
+
+const EditorComponent = WysiwygEditor as any;
 
 const TextEditor = ({ onChange, placeholder, value, error }: ITextEditor) => {
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -45,7 +47,7 @@ const TextEditor = ({ onChange, placeholder, value, error }: ITextEditor) => {
 				<span>{placeholder}</span>
 
 				<div className={styles.wrapper}>
-					<Editor
+					<EditorComponent
 						toolbarClassName={styles.toolbar}
 						editorClassName={styles.editor}
 						editorState={editorState}
